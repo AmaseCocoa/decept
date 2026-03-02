@@ -1,0 +1,15 @@
+[package]
+name = "decept"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rhai = { version = "1.24" }
+regex = "1"
+clap = { version = "4", features = ["derive"] }
+flate2 = "1.1.9"
+rp-pico = "0.9.0"
+defmt = "1.0.1"
+defmt-rtt = "1.1.0"
+panic-probe = "1.0.0"
+bsp = "0.1.2"
