@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Decept</title>
+        <link rel="stylesheet" href="index.css" />
+    </head>
+    <body>
+        <div class="card">
+            <h1>Decept on WASM</h1>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="execute">
+                    Execute
+                </button>
+                <button class="tab-btn" data-tab="compile">Compile</button>
+            </div>
+
+            <div id="execute-section" class="tab-content active">
+                <div class="field-group">
+                    <label for="logic-file">Logic File (.decc)</label>
+                    <input type="file" id="logic-file" accept=".decc" />
+                </div>
+                <div class="field-group">
+                    <label for="dsl-input">Script</label>
+                    <textarea
+                        id="dsl-input"
+                        spellcheck="false"
+                        placeholder="Enter script here..."
+                    >
+                        def s = "test"; out(s);
+                    </textarea>
+                </div>
+                <button id="run-btn">Execute Script</button>
+            </div>
+
+            <div id="compile-section" class="tab-content">
+                <div class="field-group">
+                    <label for="compile-input">Source Rhai Script</label>
+                    <textarea
+                        id="compile-input"
+                        spellcheck="false"
+                        placeholder="Write logic to pack..."
+                    ></textarea>
+                </div>
+                <button id="compile-btn">Pack to .decc & Download</button>
+            </div>
+
+            <div class="status-bar">
+                <span id="status">WASM Initializing...</span>
+            </div>
+
+            <div class="field-group" style="margin-top: 20px">
+                <label>Console Output</label>
+                <div id="output">Ready.</div>
+            </div>
+        </div>
+
+        <script type="module" src="index.js" />
+    </body>
+</html>

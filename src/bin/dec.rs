@@ -1,6 +1,8 @@
 use clap::Parser;
 use regex::Regex;
 use rhai::{Engine, Scope};
+use rhai::packages::Package;
+use rhai_rand::RandomPackage;
 use std::fs;
 use std::io::Read;
 use std::path::PathBuf;
@@ -31,8 +33,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let dsl_code = fs::read_to_string(&cli.input)?;
     let mut engine = Engine::new();
+    let random = RandomPackage::new();
     let mut scope = Scope::new();
     engine.set_max_expr_depths(128, 128);
+    random.register_into_engine(&mut engine);
 
     let mut rhai_lines = Vec::new();
     let re_vali = Regex::new(r"vali\s*\(\s*([^,)]+)\s*,\s*([^,)]+)\s*,\s*([^)]+)\s*\)")?;
